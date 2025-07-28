@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 Movie Rating Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #3a6186, #89253e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+      width: 90%;
+      max-width: 450px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #ffe;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 8px;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6f61;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e85d50;
+    }
+
+    .result {
+      margin-top: 25px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    @media screen and (max-width: 500px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Movie Rating Predictor</h1>
+    <form method="POST">
+      <label for="genre">Genre</label>
+      <input type="text" name="genre" id="genre" placeholder="e.g. Action, Comedy" required>
+
+      <label for="director">Director</label>
+      <input type="text" name="director" id="director" placeholder="e.g. Rohit Shetty" required>
+
+      <label for="actor">Actor</label>
+      <input type="text" name="actor" id="actor" placeholder="e.g. Akshay Kumar" required>
+
+      <button type="submit">Predict Rating</button>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result">
+      ⭐ Predicted IMDb Rating: <strong>{{ prediction }}</strong>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
